@@ -3,6 +3,7 @@ import { currentUser } from "@clerk/nextjs/server"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, TrendingUp, Shield, Zap } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export default async function Home() {
   const user = await currentUser()
@@ -74,6 +75,7 @@ export default async function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
