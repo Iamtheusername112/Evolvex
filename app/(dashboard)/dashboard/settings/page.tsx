@@ -14,10 +14,10 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Settings</h1>
-        <p className="text-muted-foreground">Manage your account and preferences</p>
+        <h1 className="text-2xl md:text-3xl font-bold">Settings</h1>
+        <p className="text-sm md:text-base text-[var(--color-muted-foreground)]">Manage your account and preferences</p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -35,7 +35,7 @@ export default function SettingsPage() {
               <Label>Email</Label>
               <Input type="email" placeholder="your@email.com" />
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
               <Label>Profile Picture</Label>
               <UserButton />
             </div>

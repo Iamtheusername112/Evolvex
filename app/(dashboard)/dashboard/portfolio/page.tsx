@@ -20,10 +20,10 @@ const pieData = [
 
 export default function PortfolioPage() {
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Portfolio</h1>
-        <p className="text-muted-foreground">Manage your holdings and assets</p>
+        <h1 className="text-2xl md:text-3xl font-bold">Portfolio</h1>
+        <p className="text-sm md:text-base text-[var(--color-muted-foreground)]">Manage your holdings and assets</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
@@ -36,14 +36,14 @@ export default function PortfolioPage() {
             <CardContent>
               <div className="space-y-4">
                 {holdings.map((holding, i) => (
-                  <div key={i} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 md:p-4 border rounded-lg">
                     <div>
-                      <div className="font-semibold">{holding.asset}</div>
-                      <div className="text-sm text-muted-foreground">{holding.amount} {holding.symbol}</div>
+                      <div className="font-semibold text-sm md:text-base">{holding.asset}</div>
+                      <div className="text-xs md:text-sm text-[var(--color-muted-foreground)]">{holding.amount} {holding.symbol}</div>
                     </div>
-                    <div className="text-right">
-                      <div className="font-semibold">{holding.value}</div>
-                      <div className={`text-sm ${holding.change.startsWith("+") ? "text-green-600" : "text-red-600"}`}>
+                    <div className="text-left sm:text-right">
+                      <div className="font-semibold text-sm md:text-base">{holding.value}</div>
+                      <div className={`text-xs md:text-sm ${holding.change.startsWith("+") ? "text-green-600" : "text-red-600"}`}>
                         {holding.change}
                       </div>
                     </div>
@@ -60,7 +60,7 @@ export default function PortfolioPage() {
             <CardDescription>Portfolio allocation</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
                   data={pieData}
@@ -90,11 +90,11 @@ export default function PortfolioPage() {
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="all">
-            <TabsList>
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="buy">Buys</TabsTrigger>
-              <TabsTrigger value="sell">Sells</TabsTrigger>
-              <TabsTrigger value="deposit">Deposits</TabsTrigger>
+            <TabsList className="grid grid-cols-4 w-full">
+              <TabsTrigger value="all" className="text-xs sm:text-sm">All</TabsTrigger>
+              <TabsTrigger value="buy" className="text-xs sm:text-sm">Buys</TabsTrigger>
+              <TabsTrigger value="sell" className="text-xs sm:text-sm">Sells</TabsTrigger>
+              <TabsTrigger value="deposit" className="text-xs sm:text-sm">Deposits</TabsTrigger>
             </TabsList>
             <TabsContent value="all" className="space-y-2 mt-4">
               {[
@@ -103,14 +103,14 @@ export default function PortfolioPage() {
                 { type: "Deposit", asset: "USD", amount: "$10,000", price: "$10,000", date: "2024-01-13 09:00", status: "Completed" },
                 { type: "Buy", asset: "EUR", amount: "5,000 EUR", price: "$5,412", date: "2024-01-12 14:15", status: "Completed" },
               ].map((tx, i) => (
-                <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
+                <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 p-3 border rounded-lg">
                   <div>
-                    <div className="font-medium">{tx.type} {tx.asset}</div>
-                    <div className="text-sm text-muted-foreground">{tx.date}</div>
+                    <div className="font-medium text-sm md:text-base">{tx.type} {tx.asset}</div>
+                    <div className="text-xs md:text-sm text-[var(--color-muted-foreground)]">{tx.date}</div>
                   </div>
-                  <div className="text-right">
-                    <div className="font-medium">{tx.amount}</div>
-                    <div className="text-sm text-muted-foreground">{tx.status}</div>
+                  <div className="text-left sm:text-right">
+                    <div className="font-medium text-sm md:text-base">{tx.amount}</div>
+                    <div className="text-xs md:text-sm text-[var(--color-muted-foreground)]">{tx.status}</div>
                   </div>
                 </div>
               ))}

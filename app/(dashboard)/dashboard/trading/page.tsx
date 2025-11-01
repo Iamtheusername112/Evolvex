@@ -45,25 +45,25 @@ export default function TradingPage() {
   }
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Trading</h1>
-        <p className="text-muted-foreground">Trade Forex and Crypto assets</p>
+        <h1 className="text-2xl md:text-3xl font-bold">Trading</h1>
+        <p className="text-sm md:text-base text-[var(--color-muted-foreground)]">Trade Forex and Crypto assets</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">
           <Card>
             <CardHeader>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <CardTitle>{selectedPair}</CardTitle>
-                  <CardDescription className="text-2xl font-bold text-green-600">
+                  <CardTitle className="text-lg md:text-xl">{selectedPair}</CardTitle>
+                  <CardDescription className="text-xl md:text-2xl font-bold text-green-600">
                     {tradingPairs.find(p => p.symbol === selectedPair)?.price}
                   </CardDescription>
                 </div>
                 <Select value={selectedPair} onValueChange={setSelectedPair}>
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-full sm:w-[180px]">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -77,7 +77,7 @@ export default function TradingPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <ResponsiveContainer width="100%" height={400}>
+              <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={chartData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="time" />
@@ -117,10 +117,10 @@ export default function TradingPage() {
           </Card>
         </div>
 
-        <Card>
+        <Card className="sticky top-20 md:top-4">
           <CardHeader>
-            <CardTitle>Place Order</CardTitle>
-            <CardDescription>Create a new trading order</CardDescription>
+            <CardTitle className="text-lg md:text-xl">Place Order</CardTitle>
+            <CardDescription className="text-xs md:text-sm">Create a new trading order</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Tabs value={side} onValueChange={setSide}>

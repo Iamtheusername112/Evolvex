@@ -20,10 +20,10 @@ const strategyData = [
 
 export default function AnalyticsPage() {
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Analytics</h1>
-        <p className="text-muted-foreground">Track your trading performance and insights</p>
+        <h1 className="text-2xl md:text-3xl font-bold">Analytics</h1>
+        <p className="text-sm md:text-base text-[var(--color-muted-foreground)]">Track your trading performance and insights</p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -33,7 +33,7 @@ export default function AnalyticsPage() {
             <CardDescription>Profit and trade count over time</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250}>
               <AreaChart data={performanceData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
@@ -52,7 +52,7 @@ export default function AnalyticsPage() {
             <CardDescription>Number of trades per month</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250}>
               <BarChart data={performanceData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
@@ -73,12 +73,12 @@ export default function AnalyticsPage() {
         <CardContent>
           <div className="space-y-4">
             {strategyData.map((strategy, i) => (
-              <div key={i} className="p-4 border rounded-lg">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="font-semibold">{strategy.strategy}</div>
-                  <div className="text-green-600 font-medium">${strategy.profit.toLocaleString()}</div>
+              <div key={i} className="p-3 md:p-4 border rounded-lg">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                  <div className="font-semibold text-sm md:text-base">{strategy.strategy}</div>
+                  <div className="text-green-600 font-medium text-sm md:text-base">${strategy.profit.toLocaleString()}</div>
                 </div>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs md:text-sm text-[var(--color-muted-foreground)]">
                   <span>{strategy.trades} trades</span>
                   <span>Win Rate: {strategy.winRate}%</span>
                 </div>
@@ -94,8 +94,8 @@ export default function AnalyticsPage() {
             <CardTitle className="text-sm">Total Trades</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">250</div>
-            <p className="text-sm text-muted-foreground mt-2">+15% from last month</p>
+            <div className="text-2xl md:text-3xl font-bold">250</div>
+            <p className="text-xs md:text-sm text-[var(--color-muted-foreground)] mt-2">+15% from last month</p>
           </CardContent>
         </Card>
         <Card>

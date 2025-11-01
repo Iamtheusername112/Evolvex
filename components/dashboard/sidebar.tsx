@@ -26,7 +26,7 @@ export function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <div className="flex h-screen w-64 flex-col border-r bg-[var(--color-card)]/80 backdrop-blur-md relative z-20">
+    <div className="hidden md:flex h-screen w-64 flex-col border-r bg-[var(--color-card)]/80 backdrop-blur-md relative z-20">
       <div className="flex h-16 items-center border-b px-6">
         <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           EvolveX

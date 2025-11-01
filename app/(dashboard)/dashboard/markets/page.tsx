@@ -17,14 +17,14 @@ const marketData = [
 
 export default function MarketsPage() {
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Markets</h1>
-        <p className="text-muted-foreground">Real-time market data and prices</p>
+        <h1 className="text-2xl md:text-3xl font-bold">Markets</h1>
+        <p className="text-sm md:text-base text-[var(--color-muted-foreground)]">Real-time market data and prices</p>
       </div>
 
       <div className="flex gap-4">
-        <Input placeholder="Search markets..." className="max-w-sm" />
+        <Input placeholder="Search markets..." className="w-full md:max-w-sm" />
       </div>
 
       <Card>
@@ -37,12 +37,12 @@ export default function MarketsPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-4">Pair</th>
-                  <th className="text-right p-4">Price</th>
-                  <th className="text-right p-4">24h Change</th>
-                  <th className="text-right p-4">24h Volume</th>
-                  <th className="text-right p-4">24h High</th>
-                  <th className="text-right p-4">24h Low</th>
+                  <th className="text-left p-2 md:p-4 text-xs md:text-sm">Pair</th>
+                  <th className="text-right p-2 md:p-4 text-xs md:text-sm">Price</th>
+                  <th className="text-right p-2 md:p-4 text-xs md:text-sm hidden sm:table-cell">24h Change</th>
+                  <th className="text-right p-2 md:p-4 text-xs md:text-sm hidden md:table-cell">24h Volume</th>
+                  <th className="text-right p-2 md:p-4 text-xs md:text-sm hidden lg:table-cell">24h High</th>
+                  <th className="text-right p-2 md:p-4 text-xs md:text-sm hidden lg:table-cell">24h Low</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,15 +50,15 @@ export default function MarketsPage() {
                   const isPositive = market.change.startsWith("+")
                   return (
                     <tr key={i} className="border-b hover:bg-accent/50 cursor-pointer">
-                      <td className="p-4 font-semibold">{market.symbol}</td>
-                      <td className="p-4 text-right font-medium">{market.price}</td>
-                      <td className={`p-4 text-right flex items-center justify-end gap-1 ${isPositive ? "text-green-600" : "text-red-600"}`}>
-                        {isPositive ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
+                      <td className="p-2 md:p-4 font-semibold text-sm md:text-base">{market.symbol}</td>
+                      <td className="p-2 md:p-4 text-right font-medium text-sm md:text-base">{market.price}</td>
+                      <td className={`p-2 md:p-4 text-right flex items-center justify-end gap-1 text-xs md:text-sm ${isPositive ? "text-green-600" : "text-red-600"} hidden sm:flex`}>
+                        {isPositive ? <TrendingUp className="h-3 w-3 md:h-4 md:w-4" /> : <TrendingDown className="h-3 w-3 md:h-4 md:w-4" />}
                         {market.change}
                       </td>
-                      <td className="p-4 text-right text-muted-foreground">{market.volume}</td>
-                      <td className="p-4 text-right text-muted-foreground">{market.high}</td>
-                      <td className="p-4 text-right text-muted-foreground">{market.low}</td>
+                      <td className="p-2 md:p-4 text-right text-[var(--color-muted-foreground)] text-xs md:text-sm hidden md:table-cell">{market.volume}</td>
+                      <td className="p-2 md:p-4 text-right text-[var(--color-muted-foreground)] text-xs md:text-sm hidden lg:table-cell">{market.high}</td>
+                      <td className="p-2 md:p-4 text-right text-[var(--color-muted-foreground)] text-xs md:text-sm hidden lg:table-cell">{market.low}</td>
                     </tr>
                   )
                 })}

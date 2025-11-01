@@ -46,10 +46,10 @@ const stats = [
 
 export default function DashboardPage() {
   return (
-    <div className="p-8 space-y-8">
+    <div className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6 lg:space-y-8">
       <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-muted-foreground">Welcome back! Here's your trading overview.</p>
+        <h1 className="text-2xl md:text-3xl font-bold">Dashboard</h1>
+        <p className="text-sm md:text-base text-[var(--color-muted-foreground)]">Welcome back! Here's your trading overview.</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -62,7 +62,7 @@ export default function DashboardPage() {
                 <Icon className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{stat.value}</div>
+                <div className="text-xl md:text-2xl font-bold">{stat.value}</div>
                 <p className={`text-xs flex items-center gap-1 ${stat.trend === "up" ? "text-green-600" : "text-red-600"}`}>
                   {stat.change} from last month
                 </p>
@@ -79,7 +79,7 @@ export default function DashboardPage() {
             <CardDescription>Your portfolio value over time</CardDescription>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250}>
               <AreaChart data={portfolioData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
@@ -103,12 +103,12 @@ export default function DashboardPage() {
                 { type: "Sell", asset: "ETH/USD", amount: "10 ETH", price: "$2,890", time: "5 hours ago" },
                 { type: "Buy", asset: "EUR/USD", amount: "1,000 EUR", price: "$1.08", time: "1 day ago" },
               ].map((activity, i) => (
-                <div key={i} className="flex items-center justify-between border-b pb-4 last:border-0 last:pb-0">
+                <div key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b pb-4 last:border-0 last:pb-0">
                   <div>
-                    <div className="font-medium">{activity.type} {activity.asset}</div>
-                    <div className="text-sm text-muted-foreground">{activity.amount} @ {activity.price}</div>
+                    <div className="font-medium text-sm sm:text-base">{activity.type} {activity.asset}</div>
+                    <div className="text-xs sm:text-sm text-[var(--color-muted-foreground)]">{activity.amount} @ {activity.price}</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">{activity.time}</div>
+                  <div className="text-xs sm:text-sm text-[var(--color-muted-foreground)]">{activity.time}</div>
                 </div>
               ))}
             </div>
